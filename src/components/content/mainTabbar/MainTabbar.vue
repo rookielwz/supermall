@@ -26,6 +26,7 @@
 <script>
 import Tabbar from 'components/common/tabbar/Tabbar'
 import TabbarItem from 'components/common/tabbar/TabbarItem'
+
 export default {
   components: {
     Tabbar,
