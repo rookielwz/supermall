@@ -6,12 +6,7 @@
 
 <script>
 export default {
-  methods: {
-    // backClick () {
-    //   console.log('kk')
-    // },
-
-  }
+  
 }
 </script>
 

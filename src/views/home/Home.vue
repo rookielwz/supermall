@@ -39,10 +39,9 @@ import GoodsList from 'components/content/goods/GoodsList'
 import NavBar from 'components/common/navbar/NavBar'
 import TabControl from 'components/content/tabControl/TabControl'
 import Scroll from 'components/common/scroll/Scroll'
-import BackTop from 'components/content/backTop/BackTop'
 
 import { getHomeMultidata, getHomeGoods } from 'network/home'
-import { itemListenerMixin } from 'common/mixin';
+import { itemListenerMixin,backTopMixin } from 'common/mixin';
 
 export default {
   name: 'Home',
@@ -56,13 +55,12 @@ export default {
         'new': {page: 0, list: []},
         'sell': {page: 0, list: []}
       },
-      isShowBackTop: false,
       tabOffsetTop: 0,
       isTabFixed: false,
       saveY: 0
     }
   },
-  mixins: [itemListenerMixin],
+  mixins: [itemListenerMixin,backTopMixin],
   computed: {
     showGoods(){
       return this.goods[this.currentType].list
@@ -75,8 +73,7 @@ export default {
     FeatureView,
     TabControl,
     GoodsList,
-    Scroll,
-    BackTop
+    Scroll
   },
   created () {
     // 1.请求多个数据
@@ -85,9 +82,6 @@ export default {
     this.getHomeGoods('pop')
     this.getHomeGoods('new')
     this.getHomeGoods('sell')
-  },
-  destroyed () {
-    console.log('home destroyed')
   },
   activated () {
     this.$refs.scroll.scrollTo(0, this.saveY)
@@ -101,6 +95,10 @@ export default {
   mounted () {
     // 1.图片加载完成的事件监听
     
+  },
+  updated() {
+    console.log("111")
+    this.$refs.scroll.refresh()
   },
   methods: {
     /* 
@@ -125,10 +123,7 @@ export default {
       // 判断backTop是否显示
       this.isShowBackTop = -position.y > 1000
       // 判断tabControl是否吸顶
-      this.isTabFixed = (-position.y) >this.tabOffsetTop
-    },
-    backClick () {
-      this.$refs.scroll.scrollTo(0, 0, 900)
+      this.isTabFixed = (-position.y) > this.tabOffsetTop
     },
     loadMore () {
       this.getHomeGoods(this.currentType)
@@ -162,16 +157,11 @@ export default {
 <style scoped>
   #home {
     position: relative;
-    /* padding-top: 43px; */
     height: 100vh;
   }
   .home-nav {
     background-color: var(--color-tint);
     color:#fff;
-    /* position: fixed;
-    top: 0;
-    left: 0;
-    right: 0; */
     z-index: 9;
   }
   .tab-control {
@@ -181,7 +171,7 @@ export default {
   .content {
     overflow: hidden;
     position: absolute;
-    top: 44px;
+    top: 45px;
     bottom: 49px;
     left: 0;
     right: 0;
