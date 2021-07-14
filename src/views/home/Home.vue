@@ -182,9 +182,4 @@ export default {
     right: 0;
     top: 44px;
   }
-  /* .content {
-    height: calc(100% - 93px);
-    overflow: hidden;
-    margin-top: 44px;
-  } */
 </style>
