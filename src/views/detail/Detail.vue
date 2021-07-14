@@ -155,5 +155,6 @@ export default {
    position: relative;
    z-index: 9;
    background-color: #fff;
+   color: #333;
  }
 </style>

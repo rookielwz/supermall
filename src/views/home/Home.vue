@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
+    <nav-bar><div slot="center">购物街</div></nav-bar>
     <tab-control 
         :titles="['流行','新款','精选']" 
         @tabClick='tabClick'
@@ -159,11 +159,6 @@ export default {
     position: relative;
     height: 100vh;
   }
-  .home-nav {
-    background-color: var(--color-tint);
-    color:#fff;
-    z-index: 9;
-  }
   .tab-control {
     position: relative;
     z-index: 9;
@@ -171,7 +166,7 @@ export default {
   .content {
     overflow: hidden;
     position: absolute;
-    top: 45px;
+    top: 44px;
     bottom: 49px;
     left: 0;
     right: 0;

@@ -74,7 +74,7 @@ export default {
     padding-left: 15px;
   }
   .content p {
-    padding: 15px 5px;
+    padding: 10px 5px;
     font-size: 14px;
   }
   .content .other_info {
